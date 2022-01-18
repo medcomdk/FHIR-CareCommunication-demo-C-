@@ -4,7 +4,6 @@ using static Hl7.Fhir.Model.MessageHeader;
 namespace CareCommunicationProfile;
 
 public record CareCommunicationMessageDTO(
-    string EventCode,
     MessagingOrganizationDTO Sender,
     MessagingOrganizationDTO PrimaryReceiver,
     CareCommunicationDTO CareCommunication);
@@ -30,7 +29,7 @@ internal class CareCommunicationMessageMapper : FhirMapper
         var primaryReceiver = MapPrimaryReceiver(fhirMessageHeader.Destination, resourceLocator);
         var communicationDTO = MapCommunication(fhirMessageHeader.Focus, resourceLocator);
 
-        return new CareCommunicationMessageDTO(eventCode, sender, primaryReceiver, communicationDTO);
+        return new CareCommunicationMessageDTO(sender, primaryReceiver, communicationDTO);
     }
     public Bundle Map(CareCommunicationMessageDTO messageDTO)
     {
@@ -41,7 +40,7 @@ internal class CareCommunicationMessageMapper : FhirMapper
 
         var fhirMessageHeader = new MessageHeader();
         fhirMessageHeader.Id = Guid.NewGuid().ToString();
-        fhirMessageHeader.Event = new Coding(EventCodes, messageDTO.EventCode);
+        fhirMessageHeader.Event = new Coding(EventCodes, "care-communication-message");
 
         resourceAppender(fhirMessageHeader, $"urn:uuid:{fhirMessageHeader.Id}");
 

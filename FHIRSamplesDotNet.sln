@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareCommunicationProfile", "CareCommunicationProfile\CareCommunicationProfile.csproj", "{08200C7A-64AF-4FD1-B6D2-AF1C9C693FB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareCommunicationProfile", "CareCommunicationProfile\CareCommunicationProfile.csproj", "{08200C7A-64AF-4FD1-B6D2-AF1C9C693FB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareCommunicationProfile.Test", "CareCommunicationProfile.Test\CareCommunicationProfile.Test.csproj", "{4E9CA760-7A69-4D48-98CF-C1CB89D38F0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareCommunicationProfile.Test", "CareCommunicationProfile.Test\CareCommunicationProfile.Test.csproj", "{4E9CA760-7A69-4D48-98CF-C1CB89D38F0A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareCommunicationSender", "CareCommunicationSender\CareCommunicationSender.csproj", "{F3EC8188-A855-4981-96DE-EAAFF821E369}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareCommunicationReceiver", "CareCommunicationReceiver\CareCommunicationReceiver.csproj", "{57544366-AFEE-4EAF-A369-E9CFFFD64F32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{4E9CA760-7A69-4D48-98CF-C1CB89D38F0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E9CA760-7A69-4D48-98CF-C1CB89D38F0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E9CA760-7A69-4D48-98CF-C1CB89D38F0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3EC8188-A855-4981-96DE-EAAFF821E369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3EC8188-A855-4981-96DE-EAAFF821E369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3EC8188-A855-4981-96DE-EAAFF821E369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3EC8188-A855-4981-96DE-EAAFF821E369}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57544366-AFEE-4EAF-A369-E9CFFFD64F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57544366-AFEE-4EAF-A369-E9CFFFD64F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57544366-AFEE-4EAF-A369-E9CFFFD64F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57544366-AFEE-4EAF-A369-E9CFFFD64F32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

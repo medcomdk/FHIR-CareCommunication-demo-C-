@@ -46,7 +46,6 @@ public class SerializeCareCommunicationTests : IClassFixture<Validator>
 
     private CareCommunicationMessageDTO GetTestMessage()
     {
-        var eventCode = "care-communication-message";
         var sender = new MessagingOrganizationDTO("Sender Organization", "123456789012345", "5790001382445");
         var primaryReceiver = new MessagingOrganizationDTO("Receiver Organization", "543210987654321", "5790000121526");
 
@@ -61,7 +60,7 @@ public class SerializeCareCommunicationTests : IClassFixture<Validator>
 
         var careCommunication = new CareCommunicationDTO(subject, category, topic, payloadTexts);
 
-        return new CareCommunicationMessageDTO(eventCode, sender, primaryReceiver, careCommunication);
+        return new CareCommunicationMessageDTO(sender, primaryReceiver, careCommunication);
     }
 
     [Fact]
