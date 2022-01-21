@@ -3,9 +3,9 @@ using System;
 using System.IO;
 using System.Linq;
 
-var msgFile = args.FirstOrDefault() ?? string.Empty;
+var msgFile = args.FirstOrDefault();
 
-if (msgFile == string.Empty)
+if (string.IsNullOrWhiteSpace(msgFile))
 {
     Console.WriteLine("Usage: CareCommunicationReceiver <file name>");
     return -1;
