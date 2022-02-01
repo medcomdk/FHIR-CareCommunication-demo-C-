@@ -51,7 +51,7 @@ var message = new CareCommunicationMessageDTO(sender, receiver, careCommunicatio
 try
 {
     var fileName = $"{outputDir}\\msg{timestamp.LocalDateTime.ToString("yyyyMMddHHmmssfff")}.json";
-    var json = new CareCommunicationSerializer().SerializeAsJson(message);
+    var json = CareCommunicationSerializer.SerializeAsJson(message);
 
     File.WriteAllText(fileName, json);
 

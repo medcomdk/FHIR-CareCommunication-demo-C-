@@ -68,7 +68,7 @@ public class SerializeCareCommunicationTests : IClassFixture<Validator>
     {
         var messageDTO = GetTestMessage();
 
-        var xml = new CareCommunicationSerializer().SerializeAsXML(messageDTO);
+        var xml = CareCommunicationSerializer.SerializeAsXML(messageDTO);
 
         var message = new FhirXmlParser().Parse<Bundle>(xml);
         var outcome = validator.Validate(message);
@@ -80,7 +80,7 @@ public class SerializeCareCommunicationTests : IClassFixture<Validator>
     {
         var messageDTO = GetTestMessage();
 
-        var json = new CareCommunicationSerializer().SerializeAsJson(messageDTO);
+        var json = CareCommunicationSerializer.SerializeAsJson(messageDTO);
 
         var message = new FhirJsonParser().Parse<Bundle>(json);
         var outcome = validator.Validate(message);

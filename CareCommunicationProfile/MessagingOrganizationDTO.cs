@@ -24,7 +24,7 @@ internal class MessagingOrganizationMapper : FhirMapper
         return new MessagingOrganizationDTO(name, sor, ean);
     }
 
-    internal Organization Map(MessagingOrganizationDTO primaryReceiver)
+    public Organization Map(MessagingOrganizationDTO primaryReceiver)
     {
         var fhirOrganization = new Organization();
 

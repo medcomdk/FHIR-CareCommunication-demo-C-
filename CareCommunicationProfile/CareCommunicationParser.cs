@@ -4,7 +4,7 @@ using static Hl7.Fhir.Model.MessageHeader;
 
 namespace CareCommunicationProfile;
 
-public class CareCommunicationParser
+public static class CareCommunicationParser
 {
     public static CareCommunicationMessageDTO FromJson(string json) =>
         new CareCommunicationMessageMapper().Map(new FhirJsonParser().Parse<Bundle>(json));

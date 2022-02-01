@@ -9,10 +9,10 @@ namespace CareCommunicationProfile;
 
 public class CareCommunicationSerializer
 {
-    public string SerializeAsXML(CareCommunicationMessageDTO messageDTO) =>
+    public static string SerializeAsXML(CareCommunicationMessageDTO messageDTO) =>
         new FhirXmlSerializer().SerializeToString(new CareCommunicationMessageMapper().Map(messageDTO));
 
-    public string SerializeAsJson(CareCommunicationMessageDTO messageDTO) =>
+    public static string SerializeAsJson(CareCommunicationMessageDTO messageDTO) =>
         new FhirJsonSerializer().SerializeToString(new CareCommunicationMessageMapper().Map(messageDTO));
 }
 
