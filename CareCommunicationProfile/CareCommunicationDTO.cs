@@ -37,10 +37,10 @@ internal class CareCommunicationMapper : FhirMapper
         return fhirCommunication;
     }
 
-    private static ResourceReference MapSubject(PatientDTO subject, Action<Resource, string> resourceAppender)
+    private ResourceReference MapSubject(PatientDTO subject, Action<Resource, string> resourceAppender)
     {
         var fhirPatient = new PatientMapper().Map(subject);
-        var fhirPatientUrl = $"urn:uuid:{fhirPatient.Id}";
+        var fhirPatientUrl = ToUrn(fhirPatient.Id);
 
         resourceAppender(fhirPatient, fhirPatientUrl);
 

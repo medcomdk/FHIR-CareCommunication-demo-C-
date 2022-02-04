@@ -46,7 +46,7 @@ var text = GetInputString("Text content");
 var payloadTexts = new List<PayloadTextDTO>() { new PayloadTextDTO(timestamp, author, text) };
 
 var careCommunication = new CareCommunicationDTO(patient, category, topic, payloadTexts);
-var message = new CareCommunicationMessageDTO(sender, receiver, careCommunication);
+var message = new CareCommunicationMessageDTO(timestamp, sender, receiver, careCommunication);
 
 try
 {

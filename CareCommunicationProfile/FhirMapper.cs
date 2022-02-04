@@ -6,6 +6,9 @@ internal class FhirMapper
 {
     protected readonly static string BaseUri = "http://medcomfhir.dk/fhir/core/1.0/";
 
+    protected string ToId(string urn) => urn.Replace("urn:uuid:", string.Empty);
+    protected string ToUrn(string id) => $"urn:uuid:{id}";
+
     protected string ConvertHumanNameToText(List<HumanName> fhirHumanNames)
     {
         var fhirHumanName = fhirHumanNames.FirstOrDefault();

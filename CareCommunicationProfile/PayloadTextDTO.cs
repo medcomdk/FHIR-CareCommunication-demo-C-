@@ -63,7 +63,7 @@ internal class PayloadTextMapper : FhirMapper
             Id = Guid.NewGuid().ToString(),
             Name = ConvertTextToHumanName(author)
         };
-        var authorUrl = $"urn:uuid:{fhirAuthor.Id}";
+        var authorUrl = ToUrn(fhirAuthor.Id);
         resourceAppender(fhirAuthor, authorUrl);
 
         return new ResourceReference(authorUrl);

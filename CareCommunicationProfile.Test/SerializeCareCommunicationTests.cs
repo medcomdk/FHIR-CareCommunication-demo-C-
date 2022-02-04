@@ -60,7 +60,7 @@ public class SerializeCareCommunicationTests : IClassFixture<Validator>
 
         var careCommunication = new CareCommunicationDTO(subject, category, topic, payloadTexts);
 
-        return new CareCommunicationMessageDTO(sender, primaryReceiver, careCommunication);
+        return new CareCommunicationMessageDTO(timestamp, sender, primaryReceiver, careCommunication);
     }
 
     [Fact]
