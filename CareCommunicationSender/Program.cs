@@ -45,7 +45,7 @@ Console.Write("Text:");
 var text = GetInputString("Text content");
 var payloadTexts = new List<PayloadTextDTO>() { new PayloadTextDTO(timestamp, author, text) };
 
-var careCommunication = new CareCommunicationDTO(patient, category, topic, payloadTexts);
+var careCommunication = new CareCommunicationDTO(timestamp, patient, category, topic, payloadTexts);
 var message = new CareCommunicationMessageDTO(timestamp, sender, receiver, careCommunication);
 
 try

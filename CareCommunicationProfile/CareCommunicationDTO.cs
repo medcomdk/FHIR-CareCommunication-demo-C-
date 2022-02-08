@@ -4,6 +4,7 @@ using static Hl7.Fhir.Model.Communication;
 namespace CareCommunicationProfile;
 
 public record CareCommunicationDTO(
+    DateTimeOffset Sent,
     PatientDTO Subject,
     string Category,
     string? Topic,
@@ -16,18 +17,20 @@ internal class CareCommunicationMapper : FhirMapper
 
     public CareCommunicationDTO Map(Communication fhirCommunication, Func<string?, Resource?> resourceLocator)
     {
+        var sent = ConvertFhirDateTimeToDateTimeOffset(fhirCommunication.SentElement);
         var subject = MapSubject(fhirCommunication.Subject, resourceLocator);
         string category = MapCategory(fhirCommunication.Category);
         var topic = fhirCommunication.Topic?.Text;
         var payloadTexts = MapPayloadTexts(fhirCommunication.Payload, resourceLocator).ToList();
 
-        return new CareCommunicationDTO(subject, category, topic, payloadTexts);
+        return new CareCommunicationDTO(sent, subject, category, topic, payloadTexts);
     }
     public Communication Map(CareCommunicationDTO careCommunication, Action<Resource, string> resourceAppender)
     {
         var fhirCommunication = new Communication();
         fhirCommunication.Id = Guid.NewGuid().ToString();
         fhirCommunication.Status = EventStatus.Unknown;
+        fhirCommunication.SentElement = new FhirDateTime(careCommunication.Sent);
 
         fhirCommunication.Subject = MapSubject(careCommunication.Subject, resourceAppender);
         fhirCommunication.Category = MapCategory(careCommunication.Category);

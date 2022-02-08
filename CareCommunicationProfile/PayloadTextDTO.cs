@@ -12,7 +12,7 @@ internal class PayloadTextMapper : FhirMapper
 
     public PayloadTextDTO Map(PayloadComponent textPayloadComponent, Func<string?, Resource?> resourceLocator)
     {
-        var authoredTimestamp = MapAuthoredTimestamp(textPayloadComponent);
+        var authoredTimestamp = ConvertFhirDateTimeToDateTimeOffset(textPayloadComponent.GetExtensionValue<FhirDateTime>(DateTimeExtension));
         var authorDisplayName = MapAuthorDisplayName(textPayloadComponent, resourceLocator);
         var textContent = MapTextContent(textPayloadComponent.Content as FhirString);
 
@@ -27,22 +27,6 @@ internal class PayloadTextMapper : FhirMapper
         textPayloadComponent.Content = new FhirString(payloadText.Text);
 
         return textPayloadComponent;
-    }
-
-    private DateTimeOffset MapAuthoredTimestamp(PayloadComponent textPayloadComponent)
-    {
-        var fhirTimestamp = textPayloadComponent.GetExtensionValue<FhirDateTime>(DateTimeExtension);
-        try
-        {
-            if (!fhirTimestamp.TryToDateTimeOffset(out var timestamp))
-                timestamp = ConvertDateOnlyAsLocalTimezone(fhirTimestamp);
-
-            return timestamp;
-        }
-        catch
-        {
-            throw new InvalidOperationException("Illegal timestamp passed for payload component");
-        }
     }
 
     private string MapAuthorDisplayName(PayloadComponent textPayloadComponent, Func<string?, Resource?> resourceLocator)

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CareCommunicationReceiver": {
+      "commandName": "Project",
+      "commandLineArgs": "..\\..\\..\\..\\CareCommunicationProfile.Test\\Messages\\NewMessage.json"
+    }
+  }
+}

@@ -1,3 +1,5 @@
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Serialization;
 using System.IO;
 using Xunit;
 

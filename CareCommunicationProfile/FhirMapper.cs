@@ -27,6 +27,7 @@ internal class FhirMapper
             return new List<HumanName>() {
                 new HumanName
                 {
+                    Use = HumanName.NameUse.Official,
                     Family = nameComponents.Last(),
                     Given = nameComponents.Take(length - 1)
                 }
@@ -36,14 +37,23 @@ internal class FhirMapper
             throw new InvalidOperationException("Empty human name is not allowed");
     }
 
-    protected DateTimeOffset ConvertDateOnlyAsLocalTimezone(FhirDateTime fhirTimestamp)
+    protected DateTimeOffset ConvertFhirDateTimeToDateTimeOffset(FhirDateTime fhirTimestamp)
     {
-        DateTimeOffset timestamp;
-        var localTimestamp = fhirTimestamp.ToDateTimeOffset(TimeSpan.Zero).DateTime;
-        if (localTimestamp.TimeOfDay == TimeSpan.Zero)
-            timestamp = localTimestamp;
-        else
-            throw new InvalidOperationException();
-        return timestamp;
+        try
+        {
+            if (!fhirTimestamp.TryToDateTimeOffset(out var timestamp))
+            {
+                var localTimestamp = fhirTimestamp.ToDateTimeOffset(TimeSpan.Zero).DateTime;
+                if (localTimestamp.TimeOfDay == TimeSpan.Zero)
+                    timestamp = localTimestamp;
+                else
+                    throw new InvalidOperationException();
+            }
+            return timestamp;
+        }
+        catch
+        {
+            throw new InvalidOperationException("Illegal timestamp passed for datetime component");
+        }
     }
 }
