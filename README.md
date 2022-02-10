@@ -149,6 +149,6 @@ var multiResolver = new MultiResolver(resolvers);
 settings.ResourceResolver = multiResolver;
 settings.GenerateSnapshot = true;
 
-var operationOutcome = validator.Validate(message);
+var operationOutcome = validator.Validate(message, "http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-careCommunication-message");
 ```
 The resulting operationOutcome contains a list of all issues in the message. The message is valid if operationOutcome.Error is 0.
